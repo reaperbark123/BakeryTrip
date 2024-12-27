@@ -1,13 +1,9 @@
--- atp ion really care anymore i dont really like exploiting no more so
 local Library = {};
 local MobileUI = {};
 local MyAccent = Color3.fromRGB(242, 176, 255);
 local ThemeManager = {};
-local SaveManager = {}
 
-local openDropdowns = {}
-
-do -- //UI Stuff
+do -- //UI Shit
     do--// Library Functions
         local InputService = game:GetService('UserInputService');
         local TextService = game:GetService('TextService');
@@ -69,9 +65,6 @@ do -- //UI Stuff
 
             Signals = {};
             ScreenGui = ScreenGui;
-
-            HubName = "Ascendify";
-            Vanity = "discord.gg/ascendify";
         };
 
         local RainbowStep = 0
@@ -1300,17 +1293,7 @@ do -- //UI Stuff
                                 Key = 'MB1';
                             elseif Input.UserInputType == Enum.UserInputType.MouseButton2 then
                                 Key = 'MB2';
-                            elseif Input.UserInputType == Enum.UserInputType.Gamepad1 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad2 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad3 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad4 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad5 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad6 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad7 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad8 then
-                                Key = Input.KeyCode.Name; -- This will give the specific button on the gamepad (e.g., ButtonA, ButtonB)
                             end;
-                            
 
                             Break = true;
                             Picking = false;
@@ -1342,17 +1325,10 @@ do -- //UI Stuff
                                     KeyPicker.Toggled = not KeyPicker.Toggled
                                     KeyPicker:DoClick()
                                 end;
-                            elseif Input.UserInputType == Enum.UserInputType.Keyboard or Input.UserInputType == Enum.UserInputType.Gamepad1 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad2 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad3 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad4 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad5 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad6 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad7 or
-                                   Input.UserInputType == Enum.UserInputType.Gamepad8 then
+                            elseif Input.UserInputType == Enum.UserInputType.Keyboard then
                                 if Input.KeyCode.Name == Key then
                                     KeyPicker.Toggled = not KeyPicker.Toggled;
-                                    KeyPicker:DoClick() -- airpodcase
+                                    KeyPicker:DoClick()
                                 end;
                             end;
                         end;
@@ -2594,19 +2570,15 @@ do -- //UI Stuff
                 end;
 
                 DropdownOuter.InputBegan:Connect(function(Input, typing)
-                    if typing then return end
+                    if typing then return end;
                     if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch and not Library:MouseIsOverOpenedFrame() then
                         if ListOuter.Visible then
-                            Dropdown:CloseDropdown()
-                            table.remove(openDropdowns, 1)
+                            Dropdown:CloseDropdown();
                         else
-                            if #openDropdowns == 0 then
-                                Dropdown:OpenDropdown()
-                                table.insert(openDropdowns, Dropdown)
-                            end
-                        end
-                    end
-                end)
+                            Dropdown:OpenDropdown();
+                        end;
+                    end;
+                end);
 
                 InputService.InputBegan:Connect(function(Input, typing)
                     if typing then return end;
@@ -2616,7 +2588,6 @@ do -- //UI Stuff
                         if Mouse.X < AbsPos.X or Mouse.X > AbsPos.X + AbsSize.X
                             or Mouse.Y < (AbsPos.Y - 20 - 1) or Mouse.Y > AbsPos.Y + AbsSize.Y then
 
-                            table.remove(openDropdowns, 1)
                             Dropdown:CloseDropdown();
                         end;
                     end;
@@ -3080,7 +3051,7 @@ do -- //UI Stuff
                 Size = UDim2.new(0, 0, 0, 25);
                 RichText = true;
                 Text = Config.Game and (
-                    Library.HubName .. " | <font color= \"rgb(%d, %d, %d)\">" .. Config.Game .. "</font> | <font color= \"rgb(%d, %d, %d)\">" .. Library.Vanity .. "</font>"
+                    "Ascendify | <font color= \"rgb(%d, %d, %d)\">" .. Config.Game .. "</font> | <font color= \"rgb(%d, %d, %d)\">discord.gg/ascendify</font>"
                 ):format(
                         Library.Accents.CustomAccent.R * 255,
                         Library.Accents.CustomAccent.G * 255,
@@ -3088,7 +3059,7 @@ do -- //UI Stuff
                         Library.Accents.Accent2.R * 255,
                         Library.Accents.Accent2.G * 255,
                         Library.Accents.Accent2.B * 255
-                    ) or Library.HubName .. " | " .. Library.Vanity;
+                    ) or "Ascendify | discord.gg/ascendify";
                 TextXAlignment = Enum.TextXAlignment.Center;
                 ZIndex = 1;
                 Parent = Inner;
@@ -3615,9 +3586,6 @@ do -- //UI Stuff
                 local FadeTime = Config.MenuFadeTime;
                 Fading = true;
                 Toggled = (not Toggled);
-                if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Cursor.Ui") then
-                    game:GetService("Players").LocalPlayer.PlayerGui["Cursor.Ui"].Enabled = not game:GetService("Players").LocalPlayer.PlayerGui["Cursor.Ui"].Enabled
-                end
                 ModalElement.Modal = Toggled;
 
                 if Toggled then
@@ -3628,72 +3596,39 @@ do -- //UI Stuff
                         -- TODO: add cursor fade?
                         local State = InputService.MouseIconEnabled;
 
-                        -- local Cursor = Drawing.new('Triangle');
-                        -- Cursor.Thickness = 1;
-                        -- Cursor.Filled = true;
-                        -- Cursor.Visible = true;
+                        local Cursor = Drawing.new('Triangle');
+                        Cursor.Thickness = 1;
+                        Cursor.Filled = true;
+                        Cursor.Visible = true;
 
-                        -- local CursorOutline = Drawing.new('Triangle');
-                        -- CursorOutline.Thickness = 1;
-                        -- CursorOutline.Filled = false;
-                        -- CursorOutline.Color = Color3.new(0, 0, 0);
-                        -- CursorOutline.Visible = true;
+                        local CursorOutline = Drawing.new('Triangle');
+                        CursorOutline.Thickness = 1;
+                        CursorOutline.Filled = false;
+                        CursorOutline.Color = Color3.new(0, 0, 0);
+                        CursorOutline.Visible = true;
 
-                        -- while Toggled and ScreenGui.Parent do
-                        --     InputService.MouseIconEnabled = false;
-
-                        --     local mPos = InputService:GetMouseLocation();
-
-                        --     Cursor.Color = Library.AccentColor;
-
-                        --     Cursor.PointA = Vector2.new(mPos.X, mPos.Y);
-                        --     Cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 6);
-                        --     Cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 16);
-
-                        --     CursorOutline.PointA = Cursor.PointA;
-                        --     CursorOutline.PointB = Cursor.PointB;
-                        --     CursorOutline.PointC = Cursor.PointC;
-
-                        --     RenderStepped:Wait();
-                        -- end;
-
-                        -- InputService.MouseIconEnabled = State;
-
-                        -- Cursor:Remove();
-                        -- CursorOutline:Remove();
-
-                        function create(Object, Properties, Parent)
-                            local Obj = Instance.new(Object)
-                        
-                            for i,v in pairs (Properties) do
-                                Obj[i] = v
-                            end
-                            if Parent ~= nil then
-                                Obj.Parent = Parent
-                            end
-                        
-                            return Obj
-                        end
-
-                        local Cursor = create("ImageLabel", {
-                            Name = "Cursor",
-                            BackgroundTransparency = 1,
-                            Size = UDim2.new(0, 34, 0, 34),
-                            -- Image = "rbxassetid://7205257578",
-                            Image = "rbxassetid://6729586480",
-                            ZIndex = 6969,
-                        }, ScreenGui)
-                        
                         while Toggled and ScreenGui.Parent do
-                            -- InputService.MouseIconEnabled = false;
-                            Cursor.Position = UDim2.new(0, Uis:GetMouseLocation().X - 19, 0, Uis:GetMouseLocation().Y - 53)
-                            -- Uis.MouseIconEnabled = false
+                            InputService.MouseIconEnabled = false;
+
+                            local mPos = InputService:GetMouseLocation();
+
+                            Cursor.Color = Library.AccentColor;
+
+                            Cursor.PointA = Vector2.new(mPos.X, mPos.Y);
+                            Cursor.PointB = Vector2.new(mPos.X + 16, mPos.Y + 6);
+                            Cursor.PointC = Vector2.new(mPos.X + 6, mPos.Y + 16);
+
+                            CursorOutline.PointA = Cursor.PointA;
+                            CursorOutline.PointB = Cursor.PointB;
+                            CursorOutline.PointC = Cursor.PointC;
+
                             RenderStepped:Wait();
-                        end
+                        end;
 
                         InputService.MouseIconEnabled = State;
 
-                        Cursor:Destroy()
+                        Cursor:Remove();
+                        CursorOutline:Remove();
                     end);
                 end;
 
@@ -4139,282 +4074,6 @@ do -- //UI Stuff
         ThemeManager:BuildFolderTree()
     end;
 
-    do --// Settings
-        local httpService = game:GetService('HttpService')
-        do
-            SaveManager.Folder = "Reaper's Hub"
-            SaveManager.Ignore = {}
-            SaveManager.Parser = {
-                Toggle = {
-                    Save = function(idx, object) 
-                        return { type = 'Toggle', idx = idx, value = object.Value } 
-                    end,
-                    Load = function(idx, data)
-                        if Toggles[idx] then 
-                            Toggles[idx]:SetValue(data.value)
-                        end
-                    end,
-                },
-                Slider = {
-                    Save = function(idx, object)
-                        return { type = 'Slider', idx = idx, value = tostring(object.Value) }
-                    end,
-                    Load = function(idx, data)
-                        if Options[idx] then 
-                            Options[idx]:SetValue(data.value)
-                        end
-                    end,
-                },
-                Dropdown = {
-                    Save = function(idx, object)
-                        return { type = 'Dropdown', idx = idx, value = object.Value, mutli = object.Multi }
-                    end,
-                    Load = function(idx, data)
-                        if Options[idx] then 
-                            Options[idx]:SetValue(data.value)
-                        end
-                    end,
-                },
-                ColorPicker = {
-                    Save = function(idx, object)
-                        return { type = 'ColorPicker', idx = idx, value = object.Value:ToHex(), transparency = object.Transparency }
-                    end,
-                    Load = function(idx, data)
-                        if Options[idx] then 
-                            Options[idx]:SetValueRGB(Color3.fromHex(data.value), data.transparency)
-                        end
-                    end,
-                },
-                KeyPicker = {
-                    Save = function(idx, object)
-                        return { type = 'KeyPicker', idx = idx, mode = object.Mode, key = object.Value }
-                    end,
-                    Load = function(idx, data)
-                        if Options[idx] then 
-                            Options[idx]:SetValue({ data.key, data.mode })
-                        end
-                    end,
-                },
-
-                Input = {
-                    Save = function(idx, object)
-                        return { type = 'Input', idx = idx, text = object.Value }
-                    end,
-                    Load = function(idx, data)
-                        if Options[idx] and type(data.text) == 'string' then
-                            Options[idx]:SetValue(data.text)
-                        end
-                    end,
-                },
-            }
-
-            function SaveManager:SetIgnoreIndexes(list)
-                for _, key in next, list do
-                    self.Ignore[key] = true
-                end
-            end
-
-            function SaveManager:SetFolder(folder)
-                self.Folder = folder;
-                self:BuildFolderTree()
-            end
-
-            function SaveManager:Save(name)
-                if (not name) then
-                    return false, 'no config file is selected'
-                end
-
-                local fullPath = self.Folder .. '/settings/' .. name .. '.json'
-
-                local data = {
-                    objects = {}
-                }
-
-                for idx, toggle in next, Toggles do
-                    if self.Ignore[idx] then continue end
-
-                    table.insert(data.objects, self.Parser[toggle.Type].Save(idx, toggle))
-                end
-
-                for idx, option in next, Options do
-                    if not self.Parser[option.Type] then continue end
-                    if self.Ignore[idx] then continue end
-
-                    table.insert(data.objects, self.Parser[option.Type].Save(idx, option))
-                end	
-
-                local success, encoded = pcall(httpService.JSONEncode, httpService, data)
-                if not success then
-                    return false, 'failed to encode data'
-                end
-
-                writefile(fullPath, encoded)
-                return true
-            end
-
-            function SaveManager:Load(name)
-                if (not name) then
-                    return false, 'no config file is selected'
-                end
-                
-                local file = self.Folder .. '/settings/' .. name .. '.json'
-                if not isfile(file) then return false, 'invalid file' end
-
-                local success, decoded = pcall(httpService.JSONDecode, httpService, readfile(file))
-                if not success then return false, 'decode error' end
-
-                for _, option in next, decoded.objects do
-                    if self.Parser[option.type] then
-                        task.spawn(function() self.Parser[option.type].Load(option.idx, option) end) -- task.spawn() so the config loading wont get stuck.
-                    end
-                end
-
-                return true
-            end
-
-            function SaveManager:IgnoreThemeSettings()
-                self:SetIgnoreIndexes({ 
-                    "BackgroundColor", "MainColor", "AccentColor", "OutlineColor", "FontColor", -- themes
-                    "ThemeManager_ThemeList", 'ThemeManager_CustomThemeList', 'ThemeManager_CustomThemeName', -- themes
-                })
-            end
-
-            function SaveManager:BuildFolderTree()
-                local paths = {
-                    self.Folder,
-                    self.Folder .. '/themes',
-                    self.Folder .. '/settings'
-                }
-
-                for i = 1, #paths do
-                    local str = paths[i]
-                    if not isfolder(str) then
-                        makefolder(str)
-                    end
-                end
-            end
-
-            function SaveManager:RefreshConfigList()
-                local list = listfiles(self.Folder .. '/settings')
-
-                local out = {}
-                for i = 1, #list do
-                    local file = list[i]
-                    if file:sub(-5) == '.json' then
-                        -- i hate this but it has to be done ...
-
-                        local pos = file:find('.json', 1, true)
-                        local start = pos
-
-                        local char = file:sub(pos, pos)
-                        while char ~= '/' and char ~= '\\' and char ~= '' do
-                            pos = pos - 1
-                            char = file:sub(pos, pos)
-                        end
-
-                        if char == '/' or char == '\\' then
-                            table.insert(out, file:sub(pos + 1, start - 1))
-                        end
-                    end
-                end
-                
-                return out
-            end
-
-            function SaveManager:SetLibrary(library)
-                self.Library = library
-            end
-
-            function SaveManager:LoadAutoloadConfig()
-                if isfile(self.Folder .. '/settings/autoload.txt') then
-                    local name = readfile(self.Folder .. '/settings/autoload.txt')
-
-                    local success, err = self:Load(name)
-                    if not success then
-                        return self.Library:Notify('Failed to load autoload config: ' .. err)
-                    end
-
-                    self.Library:Notify(string.format('Auto loaded config %q', name))
-                end
-            end
-
-
-            function SaveManager:BuildConfigSection(tab)
-                assert(self.Library, 'Must set SaveManager.Library')
-
-                local section = tab:AddRightGroupbox('Configuration')
-
-                section:AddInput('SaveManager_ConfigName',    { Text = 'Config name' })
-                section:AddDropdown('SaveManager_ConfigList', { Text = 'Config list', Values = self:RefreshConfigList(), AllowNull = true })
-
-                section:AddDivider()
-
-                section:AddButton('Create config', function()
-                    local name = Options.SaveManager_ConfigName.Value
-
-                    if name:gsub(' ', '') == '' then 
-                        return self.Library:Notify('Invalid config name (empty)', 2)
-                    end
-
-                    local success, err = self:Save(name)
-                    if not success then
-                        return self.Library:Notify('Failed to save config: ' .. err)
-                    end
-
-                    self.Library:Notify(string.format('Created config %q', name))
-
-                    Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())
-                    Options.SaveManager_ConfigList:SetValue(nil)
-                end):AddButton('Load config', function()
-                    local name = Options.SaveManager_ConfigList.Value
-
-                    local success, err = self:Load(name)
-                    if not success then
-                        return self.Library:Notify('Failed to load config: ' .. err)
-                    end
-
-                    self.Library:Notify(string.format('Loaded config %q', name))
-                end)
-
-                section:AddButton('Overwrite config', function()
-                    local name = Options.SaveManager_ConfigList.Value
-
-                    local success, err = self:Save(name)
-                    if not success then
-                        return self.Library:Notify('Failed to overwrite config: ' .. err)
-                    end
-
-                    self.Library:Notify(string.format('Overwrote config %q', name))
-                end)
-
-                section:AddButton('Refresh list', function()
-                    Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())
-                    Options.SaveManager_ConfigList:SetValue(nil)
-                end)
-
-                section:AddButton('Set as autoload', function()
-                    local name = Options.SaveManager_ConfigList.Value
-                    writefile(self.Folder .. '/settings/autoload.txt', name)
-                    SaveManager.AutoloadLabel:SetText('Current autoload config: ' .. name)
-                    self.Library:Notify(string.format('Set %q to auto load', name))
-                end)
-
-                SaveManager.AutoloadLabel = section:AddLabel('Current autoload config: none', true)
-
-                if isfile(self.Folder .. '/settings/autoload.txt') then
-                    local name = readfile(self.Folder .. '/settings/autoload.txt')
-                    SaveManager.AutoloadLabel:SetText('Current autoload config: ' .. name)
-                end
-
-                SaveManager:SetIgnoreIndexes({ 'SaveManager_ConfigList', 'SaveManager_ConfigName' })
-            end
-
-            SaveManager:BuildFolderTree()
-        end
-    end;
-
     ThemeManager:SetLibrary(Library)
-    SaveManager:SetLibrary(Library)
 end;
-
-return Library;
+return Library
