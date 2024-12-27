@@ -4414,3 +4414,5 @@ do -- //UI Stuff
     ThemeManager:SetLibrary(Library)
     SaveManager:SetLibrary(Library)
 end;
+
+return Library;
