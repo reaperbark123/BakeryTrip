@@ -3615,7 +3615,7 @@ do -- //UI Stuff
                 local FadeTime = Config.MenuFadeTime;
                 Fading = true;
                 Toggled = (not Toggled);
-                if game:Getservice("Players").LocalPlayer.PlayerGui:FindFirstChilad("Cursor.Ui") then
+                if game:Getservice("Players").LocalPlayer.PlayerGui:FindFirstChild("Cursor.Ui") then
                     game:GetService("Players").LocalPlayer.PlayerGui["Cursor.Ui"].Enabled = not game:GetService("Players").LocalPlayer.PlayerGui["Cursor.Ui"].Enabled
                 end
                 ModalElement.Modal = Toggled;
