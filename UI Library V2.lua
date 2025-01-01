@@ -1,7 +1,7 @@
 -- Tired of gate keeping really dont care
 local Library = {};
 local MobileUI = {};
-local MyAccent = Color3.fromRGB(242, 176, 255);
+local MyAccent = Color3.fromRGB(34, 14, 37);
 local ThemeManager = {};
 local SaveManager = {}
 
@@ -3684,7 +3684,7 @@ do -- //UI Stuff
                         
                         while Toggled and ScreenGui.Parent do
                             -- InputService.MouseIconEnabled = false;
-                            Cursor.Position = UDim2.new(0, Uis:GetMouseLocation().X - 19, 0, Uis:GetMouseLocation().Y - 73)
+                            Cursor.Position = UDim2.new(0, InputService:GetMouseLocation().X - 19, 0, InputService:GetMouseLocation().Y - 73)
                             -- Uis.MouseIconEnabled = false
                             RenderStepped:Wait();
                         end
