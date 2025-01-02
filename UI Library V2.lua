@@ -3810,7 +3810,7 @@ do -- //UI Stuff
                 -- Accent.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 Accent.BorderColor3 = MobileUI.Colors.Outline
                 Accent.Position = UDim2.new(0.0141579788, 0, 0.0280487854, 0)
-                Accent.Size = UDim2.new(0.155, 0, 0.146, 0)
+                Accent.Size = UDim2.new(0.15533334, 0, 0.145728648, 0)
                 table.insert(MobileUI.Registry, Accent)
                 
                 Inner.Name = "Inner"
@@ -3867,6 +3867,35 @@ do -- //UI Stuff
                 ToggleUI.MouseButton1Down:Connect(function()
                     task.spawn(Library.Toggle)
                 end)
+
+                local UIPadding1 = Instance.new("UIPadding")
+                UIPadding1.Parent = Holder
+                UIPadding1.PaddingBottom = UDim2.new(0, 4)
+                UIPadding1.PaddingLeft = UDim.new(0, 4)
+                UIPadding1.PaddingRight = UDim.new(0, 4)
+                UIPadding1.PaddingTop = UDim.new(0, 4)
+
+                local UIPadding2 = Instance.new("UIPadding")
+                UIPadding2.Parent = Inner
+                UIPadding2.PaddingBottom = UDim2.new(0, 4)
+                UIPadding2.PaddingLeft = UDim.new(0, 4)
+                UIPadding2.PaddingRight = UDim.new(0, 4)
+                UIPadding2.PaddingTop = UDim.new(0, 4)
+
+                local UIPadding3 = Instance.new("UIPadding")
+                UIPadding3.Parent = Accent
+                UIPadding3.PaddingBottom = UDim2.new(0, 3)
+                UIPadding3.PaddingLeft = UDim.new(0, 3)
+                UIPadding3.PaddingRight = UDim.new(0, 3)
+                UIPadding3.PaddingTop = UDim.new(0, 3)
+
+                local UITextConstraint = Instance.new("UITextSizeConstraint")
+                UITextConstraint.Parent = LockUI
+                UITextConstraint.MaxTextSize = 40
+                
+                local UITextConstraint2 = Instance.new("UITextSizeConstraint")
+                UITextConstraint2.Parent = LockUI
+                UITextConstraint2.MaxTextSize = 40
             end
         end
     end;
