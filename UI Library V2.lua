@@ -3810,7 +3810,7 @@ do -- //UI Stuff
                 -- Accent.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 Accent.BorderColor3 = MobileUI.Colors.Outline
                 Accent.Position = UDim2.new(0.0141579788, 0, 0.0280487854, 0)
-                Accent.Size = UDim2.new(0, 233, 0, 116)
+                Accent.Size = UDim2.new(0.155, 0, 0.146, 0)
                 table.insert(MobileUI.Registry, Accent)
                 
                 Inner.Name = "Inner"
