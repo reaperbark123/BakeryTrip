@@ -3773,6 +3773,11 @@ do -- //UI Stuff
         local Holder = Instance.new("Frame");
         local ToggleUI = Instance.new("TextButton");
         local LockUI = Instance.new("TextButton");
+        local UITextSizeConstraint_2 = Instance.new("UITextSizeConstraint")
+        local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
+        local UIPadding = Instance.new("UIPadding")
+        local UIPadding_2 = Instance.new("UIPadding")
+        local UIPadding_3 = Instance.new("UIPadding")
 
         MobileUI = {
             Colors = {
@@ -3806,64 +3811,85 @@ do -- //UI Stuff
             do
                 Accent.Name = "Accent"
                 Accent.Parent = ScreenGui
-                Accent.BackgroundColor3 = Library.ColorsToSet.Accent
-                -- Accent.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                Accent.BorderColor3 = MobileUI.Colors.Outline
+                Accent.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+                Accent.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 Accent.Position = UDim2.new(0.0141579788, 0, 0.0280487854, 0)
                 Accent.Size = UDim2.new(0.15533334, 0, 0.145728648, 0)
-                table.insert(MobileUI.Registry, Accent)
                 
                 Inner.Name = "Inner"
                 Inner.Parent = Accent
-                -- Inner.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-                Inner.BackgroundColor3 = MobileUI.Colors.Background
-                -- Inner.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                Inner.BorderColor3 = MobileUI.Colors.Outline
+                Inner.AnchorPoint = Vector2.new(0.5, 0.5)
+                Inner.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+                Inner.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 Inner.Position = UDim2.new(0.5, 0, 0.5, 0)
                 Inner.Size = UDim2.new(1, 0, 1, 0)
-                Inner.AnchorPoint = Vector2.new(0.5, 0.5)
-                table.insert(MobileUI.Registry, Inner)
                 
                 Holder.Name = "Holder"
                 Holder.Parent = Inner
-                -- Holder.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
-                Holder.BackgroundColor3 = MobileUI.Colors.Main
-                -- Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                Holder.BorderColor3 = MobileUI.Colors.Outline
-                Holder.Position = UDim2.new(0.5, 0, 0.5, 0)
                 Holder.AnchorPoint = Vector2.new(0.5, 0.5)
+                Holder.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
+                Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                Holder.Position = UDim2.new(0.5, 0, 0.5, 0)
                 Holder.Size = UDim2.new(1, 0, 1, 0)
-                table.insert(MobileUI.Registry, Holder)
                 
                 ToggleUI.Name = "ToggleUI"
                 ToggleUI.Parent = Holder
-                -- ToggleUI.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-                ToggleUI.BackgroundColor3 = MobileUI.Colors.Main
-                -- ToggleUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                ToggleUI.BorderColor3 = MobileUI.Colors.Outline
-                ToggleUI.Size = UDim2.new(1, 0, 0.5, 0)
-                ToggleUI.Font = Enum.Font.Code
                 ToggleUI.AnchorPoint = Vector2.new(0.5, 0)
+                ToggleUI.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+                ToggleUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                ToggleUI.Position = UDim2.new(0.5, 0, 0, 0)
+                ToggleUI.Size = UDim2.new(1, 0, 0.5, 0)
+                ToggleUI.Font = Enum.Font.SourceSans
                 ToggleUI.Text = "Toggle UI"
-                ToggleUI.TextColor3 = MobileUI.Colors.Font
-                ToggleUI.TextSize = 16.000
+                ToggleUI.TextColor3 = Color3.fromRGB(255, 255, 255)
                 ToggleUI.TextScaled = true
-                table.insert(MobileUI.Registry, ToggleUI)
+                ToggleUI.TextSize = 16.000
+                ToggleUI.TextWrapped = true
+                ToggleUI.Active = true
+                
+                UITextSizeConstraint.Parent = ToggleUI
+                UITextSizeConstraint.MaxTextSize = 40
                 
                 LockUI.Name = "LockUI"
-                LockUI.Parent = Holder
-                -- LockUI.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
-                LockUI.BackgroundColor3 = MobileUI.Colors.Main
-                -- LockUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                LockUI.BorderColor3 = MobileUI.Colors.Outline
+                LockUI.Parent = Holder																	
                 LockUI.AnchorPoint = Vector2.new(0.5, 1)
+                LockUI.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+                LockUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 LockUI.Position = UDim2.new(0.5, 0, 1, 0)
-                LockUI.Size = UDim2.new(1, 0, 0.5, 1)
-                LockUI.Font = Enum.Font.Code
+                LockUI.Size = UDim2.new(1, 0, 0.5, 0)
+                LockUI.Font = Enum.Font.SourceSans
                 LockUI.Text = "Lock UI"
-                LockUI.TextColor3 = MobileUI.Colors.Font
-                LockUI.TextSize = 16.000
+                LockUI.TextColor3 = Color3.fromRGB(255, 255, 255)
                 LockUI.TextScaled = true
+                LockUI.TextSize = 16.000
+                LockUI.TextWrapped = true
+                LockUI.Active = true
+                
+                UITextSizeConstraint_2.Parent = LockUI
+                UITextSizeConstraint_2.MaxTextSize = 40
+                
+                UIPadding.Parent = Holder
+                UIPadding.PaddingBottom = UDim.new(0, 4)
+                UIPadding.PaddingLeft = UDim.new(0, 4)
+                UIPadding.PaddingRight = UDim.new(0, 4)
+                UIPadding.PaddingTop = UDim.new(0, 4)
+                
+                UIPadding_2.Parent = Inner
+                UIPadding_2.PaddingBottom = UDim.new(0, 4)
+                UIPadding_2.PaddingLeft = UDim.new(0, 4)
+                UIPadding_2.PaddingRight = UDim.new(0, 4)
+                UIPadding_2.PaddingTop = UDim.new(0, 4)
+                
+                UIPadding_3.Parent = Accent
+                UIPadding_3.PaddingBottom = UDim.new(0, 3)
+                UIPadding_3.PaddingLeft = UDim.new(0, 3)
+                UIPadding_3.PaddingRight = UDim.new(0, 3)
+                UIPadding_3.PaddingTop = UDim.new(0, 3)
+
+                table.insert(MobileUI.Registry, Accent)
+                table.insert(MobileUI.Registry, Inner)
+                table.insert(MobileUI.Registry, Holder)
+                table.insert(MobileUI.Registry, ToggleUI)
                 table.insert(MobileUI.Registry, LockUI)
 
                 LockUI.MouseButton1Down:Connect(function()
@@ -3874,34 +3900,6 @@ do -- //UI Stuff
                     task.spawn(Library.Toggle)
                 end)
 
-                local UIPadding1 = Instance.new("UIPadding")
-                UIPadding1.Parent = Holder
-                UIPadding1.PaddingBottom = UDim2.new(0, 4)
-                UIPadding1.PaddingLeft = UDim.new(0, 4)
-                UIPadding1.PaddingRight = UDim.new(0, 4)
-                UIPadding1.PaddingTop = UDim.new(0, 4)
-
-                local UIPadding2 = Instance.new("UIPadding")
-                UIPadding2.Parent = Inner
-                UIPadding2.PaddingBottom = UDim2.new(0, 4)
-                UIPadding2.PaddingLeft = UDim.new(0, 4)
-                UIPadding2.PaddingRight = UDim.new(0, 4)
-                UIPadding2.PaddingTop = UDim.new(0, 4)
-
-                local UIPadding3 = Instance.new("UIPadding")
-                UIPadding3.Parent = Accent
-                UIPadding3.PaddingBottom = UDim2.new(0, 3)
-                UIPadding3.PaddingLeft = UDim.new(0, 3)
-                UIPadding3.PaddingRight = UDim.new(0, 3)
-                UIPadding3.PaddingTop = UDim.new(0, 3)
-
-                local UITextConstraint = Instance.new("UITextSizeConstraint")
-                UITextConstraint.Parent = LockUI
-                UITextConstraint.MaxTextSize = 40
-                
-                local UITextConstraint2 = Instance.new("UITextSizeConstraint")
-                UITextConstraint2.Parent = LockUI
-                UITextConstraint2.MaxTextSize = 40
             end
         end
     end;
