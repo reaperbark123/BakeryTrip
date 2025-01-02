@@ -3819,8 +3819,9 @@ do -- //UI Stuff
                 Inner.BackgroundColor3 = MobileUI.Colors.Background
                 -- Inner.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 Inner.BorderColor3 = MobileUI.Colors.Outline
-                Inner.Position = UDim2.new(0, 3, 0, 3)
-                Inner.Size = UDim2.new(0, 227, 0, 110)
+                Inner.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Inner.Size = UDim2.new(1, 0, 1, 0)
+                Inner.AnchorPoint = Vector2.new(0.5, 0.5)
                 table.insert(MobileUI.Registry, Inner)
                 
                 Holder.Name = "Holder"
@@ -3829,8 +3830,9 @@ do -- //UI Stuff
                 Holder.BackgroundColor3 = MobileUI.Colors.Main
                 -- Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 Holder.BorderColor3 = MobileUI.Colors.Outline
-                Holder.Position = UDim2.new(0.0170000046, 0, 0.0429999605, 0)
-                Holder.Size = UDim2.new(0, 219, 0, 101)
+                Holder.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Holder.AnchorPoint = Vector2.new(0.5, 0.5)
+                Holder.Size = UDim2.new(1, 0, 1, 0)
                 table.insert(MobileUI.Registry, Holder)
                 
                 ToggleUI.Name = "ToggleUI"
@@ -3839,11 +3841,13 @@ do -- //UI Stuff
                 ToggleUI.BackgroundColor3 = MobileUI.Colors.Main
                 -- ToggleUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 ToggleUI.BorderColor3 = MobileUI.Colors.Outline
-                ToggleUI.Size = UDim2.new(0, 219, 0, 52)
+                ToggleUI.Size = UDim2.new(1, 0, 0.5, 0)
                 ToggleUI.Font = Enum.Font.Code
+                ToggleUI.AnchorPoint = Vector2.new(0.5, 0)
                 ToggleUI.Text = "Toggle UI"
                 ToggleUI.TextColor3 = MobileUI.Colors.Font
                 ToggleUI.TextSize = 16.000
+                ToggleUI.TextScaled = true
                 table.insert(MobileUI.Registry, ToggleUI)
                 
                 LockUI.Name = "LockUI"
@@ -3852,12 +3856,14 @@ do -- //UI Stuff
                 LockUI.BackgroundColor3 = MobileUI.Colors.Main
                 -- LockUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 LockUI.BorderColor3 = MobileUI.Colors.Outline
-                LockUI.Position = UDim2.new(0, 0, 0.514851511, 0)
-                LockUI.Size = UDim2.new(0, 219, 0, 49)
+                LockUI.AnchorPoint = Vector2.new(0.5, 1)
+                LockUI.Position = UDim2.new(0.5, 0, 1, 0)
+                LockUI.Size = UDim2.new(1, 0, 0.5, 1)
                 LockUI.Font = Enum.Font.Code
                 LockUI.Text = "Lock UI"
                 LockUI.TextColor3 = MobileUI.Colors.Font
                 LockUI.TextSize = 16.000
+                LockUI.TextScaled = true
                 table.insert(MobileUI.Registry, LockUI)
 
                 LockUI.MouseButton1Down:Connect(function()
