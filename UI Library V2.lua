@@ -3679,7 +3679,7 @@ do -- //UI Stuff
                             Size = UDim2.new(0, 34, 0, 34),
                             -- Image = "rbxassetid://7205257578",
                             Image = "rbxassetid://6729586480",
-                            ZIndex = 6969,
+                            ZIndex = 99999999,
                         }, ScreenGui)
                         
                         while Toggled and ScreenGui.Parent do
