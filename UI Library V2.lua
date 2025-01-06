@@ -1,7 +1,7 @@
 -- Tired of gate keeping really dont care
 local Library = {};
 local MobileUI = {};
-local MyAccent = Color3.fromRGB(34, 14, 37);
+local MyAccent = Color3.fromRGB(242, 176, 255);
 local ThemeManager = {};
 local SaveManager = {}
 
