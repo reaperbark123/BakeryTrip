@@ -3031,7 +3031,7 @@ do -- //UI Stuff
             if typeof(Config.Position) ~= 'UDim2' then Config.Position = UDim2.fromOffset(175, 50) end
                 if typeof(Config.Size) ~= 'UDim2' then
                     if GetState() == 'Mobile' then
-                        Config.Size = UDim2.fromOffset(550, 400)
+                        Config.Size = UDim2.fromOffset(370, 330)
                     else
                         Config.Size = UDim2.fromOffset(550, 600)
                     end
